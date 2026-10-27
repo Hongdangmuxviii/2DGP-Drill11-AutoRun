@@ -32,7 +32,8 @@ class Boy:
             states=[
                 {'name': 'IDLE', 'on_enter': 'enter_idle'},
                 {'name': 'RUN', 'on_enter': 'enter_run'},
-                {'name': 'AUTORUN', 'on_enter': self.auto_run.enter},
+                {'name': 'AUTORUN', 'on_enter': self.auto_run.enter,
+                 'on_exit': self.auto_run.exit},
                 {'name': 'FALLEN', 'on_enter': 'enter_fallen'},
             ],
             transitions=[
@@ -50,6 +51,7 @@ class Boy:
 
     def enter_idle(self):
         self.frame = 0
+        self.direction = 0
         self.animation_time = 0.0
         self.fall_progress = 0.0
 

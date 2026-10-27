@@ -17,6 +17,7 @@ class AutoRun:
         self.boy.frame = 0
         self.boy.animation_time = 0.0
         self.started_at = get_time()
+        self.boy.last_update_time = self.started_at
         self.elapsed = 0.0
         left, right = self.bounds()
         self.boy.x = max(left, min(right, self.boy.x))
@@ -29,7 +30,9 @@ class AutoRun:
         left, right = self.bounds()
         span = right - left
         # 한 번의 갱신에 경계를 여러 번 넘더라도 이동 거리를 보존한다.
-        position = self.boy.x - left + self.boy.face_dir * self.speed * elapsed
+        offset = self.boy.x - left
+        position = offset if self.boy.face_dir == 1 else 2 * span - offset
+        position += self.speed * elapsed
         phase = position % (2 * span)
         if phase < span:
             self.boy.x = left + phase
@@ -39,6 +42,9 @@ class AutoRun:
             self.boy.face_dir = -1
         if total >= self.DURATION:
             self.boy.finish_auto_run()
+
+    def exit(self):
+        self.boy.last_update_time = get_time()
 
     def bounds(self):
         half = 100 * self.SIZE_MULTIPLIER / 2
