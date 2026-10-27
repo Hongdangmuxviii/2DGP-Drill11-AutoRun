@@ -2,6 +2,7 @@ import math
 from pathlib import Path
 from pico2d import *
 from transitions import Machine
+from auto_run import AutoRun
 
 ASSET_DIR = Path(__file__).resolve().parent / 'assets'
 
@@ -25,16 +26,19 @@ class Boy:
         self.fall_started_at = 0.0
         self.fall_progress = 0.0
         self.image = load_image(str(ASSET_DIR / 'animation_sheet.png'))
+        self.auto_run = AutoRun(self)
         self.machine = Machine(
             model=self,
             states=[
                 {'name': 'IDLE', 'on_enter': 'enter_idle'},
                 {'name': 'RUN', 'on_enter': 'enter_run'},
+                {'name': 'AUTORUN', 'on_enter': self.auto_run.enter},
                 {'name': 'FALLEN', 'on_enter': 'enter_fallen'},
             ],
             transitions=[
                 {'trigger': 'start_running', 'source': 'IDLE', 'dest': 'RUN'},
                 {'trigger': 'stop_running', 'source': 'RUN', 'dest': 'IDLE'},
+                {'trigger': 'start_auto_run', 'source': 'IDLE', 'dest': 'AUTORUN'},
                 {'trigger': 'fall', 'source': ['IDLE', 'RUN'], 'dest': 'FALLEN'},
                 {'trigger': 'stand_up', 'source': 'FALLEN', 'dest': 'IDLE'},
             ],
@@ -65,7 +69,9 @@ class Boy:
                 self.held_keys.discard(event.key)
             self.update_movement()
         elif event.type == SDL_KEYDOWN:
-            if event.key == SDLK_f and self.state in ('IDLE', 'RUN'):
+            if event.key == SDLK_a and self.state == 'IDLE':
+                self.start_auto_run()
+            elif event.key == SDLK_f and self.state in ('IDLE', 'RUN'):
                 self.fall()
             elif event.key == SDLK_SPACE and self.state == 'FALLEN':
                 self.stand_up()
@@ -75,7 +81,7 @@ class Boy:
         self.direction = int(SDLK_RIGHT in self.held_keys) - int(SDLK_LEFT in self.held_keys)
         if len(self.held_keys) == 2:
             self.direction = 1 if self.last_direction_key == SDLK_RIGHT else -1
-        if self.state == 'FALLEN':
+        if self.state in ('FALLEN', 'AUTORUN'):
             return
         if self.direction:
             self.face_dir = self.direction
@@ -88,12 +94,14 @@ class Boy:
         now = get_time()
         elapsed = max(0.0, now - self.last_update_time)
         self.last_update_time = now
-        if self.state in ('IDLE', 'RUN'):
+        if self.state in ('IDLE', 'RUN', 'AUTORUN'):
             self.animation_time += elapsed
             self.frame = int(self.animation_time * self.ANIMATION_FPS) % self.FRAME_COUNT
             if self.state == 'RUN':
                 self.x += self.direction * self.RUN_SPEED * elapsed
                 self.x = max(self.HALF_SIZE, min(get_canvas_width() - self.HALF_SIZE, self.x))
+            elif self.state == 'AUTORUN':
+                self.auto_run.update(elapsed)
         elif self.state == 'FALLEN':
             fall_elapsed = now - self.fall_started_at
             self.fall_progress = max(0.0, min(fall_elapsed / self.FALL_DURATION, 1.0))
@@ -105,6 +113,8 @@ class Boy:
         elif self.state == 'RUN':
             row = 100 if self.face_dir == 1 else 0
             self.image.clip_draw(self.frame * 100, row, 100, 100, self.x, self.y)
+        elif self.state == 'AUTORUN':
+            self.auto_run.draw()
         elif self.state == 'FALLEN':
             # Fall toward the facing direction and keep the sprite on screen.
             progress = self.fall_progress
