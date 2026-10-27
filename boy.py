@@ -21,6 +21,7 @@ class Boy:
         self.face_dir = 1
         self.direction = 0
         self.held_keys = set()
+        self.last_direction_key = SDLK_RIGHT
         self.fall_started_at = 0.0
         self.fall_progress = 0.0
         self.image = load_image(str(ASSET_DIR / 'animation_sheet.png'))
@@ -59,6 +60,7 @@ class Boy:
         if event.type in (SDL_KEYDOWN, SDL_KEYUP) and event.key in (SDLK_LEFT, SDLK_RIGHT):
             if event.type == SDL_KEYDOWN:
                 self.held_keys.add(event.key)
+                self.last_direction_key = event.key
             else:
                 self.held_keys.discard(event.key)
             self.update_movement()
@@ -71,6 +73,8 @@ class Boy:
 
     def update_movement(self):
         self.direction = int(SDLK_RIGHT in self.held_keys) - int(SDLK_LEFT in self.held_keys)
+        if len(self.held_keys) == 2:
+            self.direction = 1 if self.last_direction_key == SDLK_RIGHT else -1
         if self.state == 'FALLEN':
             return
         if self.direction:
