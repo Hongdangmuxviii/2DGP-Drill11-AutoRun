@@ -1,22 +1,31 @@
 """과제에서 요구한 독립적인 자동 달리기 상태 클래스."""
 
-from pico2d import get_canvas_width
+from pico2d import get_canvas_width, get_time
 
 
 class AutoRun:
     SPEED_MULTIPLIER = 2.0
     SIZE_MULTIPLIER = 1.5
+    DURATION = 5.0
 
     def __init__(self, boy):
         self.boy = boy
+        self.started_at = 0.0
+        self.elapsed = 0.0
 
     def enter(self):
         self.boy.frame = 0
         self.boy.animation_time = 0.0
+        self.started_at = get_time()
+        self.elapsed = 0.0
         left, right = self.bounds()
         self.boy.x = max(left, min(right, self.boy.x))
 
     def update(self, elapsed):
+        # 진입 전 시간과 5초 이후 시간은 자동 이동에 포함하지 않는다.
+        total = min(self.DURATION, max(0.0, get_time() - self.started_at))
+        elapsed = max(0.0, total - self.elapsed)
+        self.elapsed = total
         left, right = self.bounds()
         span = right - left
         # 한 번의 갱신에 경계를 여러 번 넘더라도 이동 거리를 보존한다.
@@ -28,6 +37,8 @@ class AutoRun:
         else:
             self.boy.x = right - (phase - span)
             self.boy.face_dir = -1
+        if total >= self.DURATION:
+            self.boy.finish_auto_run()
 
     def bounds(self):
         half = 100 * self.SIZE_MULTIPLIER / 2

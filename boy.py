@@ -39,6 +39,7 @@ class Boy:
                 {'trigger': 'start_running', 'source': 'IDLE', 'dest': 'RUN'},
                 {'trigger': 'stop_running', 'source': 'RUN', 'dest': 'IDLE'},
                 {'trigger': 'start_auto_run', 'source': 'IDLE', 'dest': 'AUTORUN'},
+                {'trigger': 'finish_auto_run', 'source': 'AUTORUN', 'dest': 'IDLE'},
                 {'trigger': 'fall', 'source': ['IDLE', 'RUN'], 'dest': 'FALLEN'},
                 {'trigger': 'stand_up', 'source': 'FALLEN', 'dest': 'IDLE'},
             ],
