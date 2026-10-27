@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050">
+<rect width="1600" height="1050" fill="#f8fafc"/>
+<text x="800" y="65" text-anchor="middle" dominant-baseline="central" font-size="40" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">Drill #11  소년 AutoRun 상태 다이어그램</text>
+<text x="800" y="112" text-anchor="middle" dominant-baseline="central" font-size="22" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#64748b">transitions.Machine · 별도 AutoRun 클래스 · 기존 RUN/FALLEN 유지</text>
+<polyline points="560,300 1020,300" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1020,300 1006.4854669814637,306.50825608676337 1006.4854669814637,293.49174391323663" fill="#64748b"/>
+<polyline points="1020,380 560,380" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="560,380 573.5145330185363,373.49174391323663 573.5145330185363,386.50825608676337" fill="#64748b"/>
+<polyline points="280,410 280,660" fill="none" stroke="#d97706" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="280,660 273.49174391323663,646.4854669814637 286.50825608676337,646.4854669814637" fill="#d97706"/>
+<polyline points="500,660 500,410" fill="none" stroke="#d97706" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="500,410 506.50825608676337,423.51453301853627 493.49174391323663,423.51453301853627" fill="#d97706"/>
+<polyline points="560,700 1020,410" fill="none" stroke="#d97706" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1020,410 1012.0385694931311,422.71281338981646 1005.0968515318606,411.7018124857322" fill="#d97706"/>
+<polyline points="1100,410 1100,660" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1100,660 1093.4917439132366,646.4854669814637 1106.5082560867634,646.4854669814637" fill="#64748b"/>
+<polyline points="1280,660 1280,410" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1280,410 1286.5082560867634,423.51453301853627 1273.4917439132366,423.51453301853627" fill="#64748b"/>
+<polyline points="220,360 100,360 100,940 1180,940 1180,820" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1180,820 1186.5082560867634,833.5145330185363 1173.4917439132366,833.5145330185363" fill="#64748b"/>
+<polyline points="1360,740 1500,740 1500,175 400,175 400,270" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="400,270 393.49174391323663,256.48546698146373 406.50825608676337,256.48546698146373" fill="#64748b"/>
+<circle cx="141" cy="300" r="11" fill="#23354d"/>
+<polyline points="152,300 220,300" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="220,300 206.4854669814637,306.50825608676337 206.4854669814637,293.49174391323663" fill="#64748b"/>
+<rect x="220" y="270" width="340" height="140" rx="22" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="390.0" y="305" text-anchor="middle" dominant-baseline="central" font-size="28" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#2563eb">IDLE</text>
+<text x="390.0" y="345" text-anchor="middle" dominant-baseline="central" font-size="22" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">제자리 대기</text>
+<text x="390.0" y="373" text-anchor="middle" dominant-baseline="central" font-size="22" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">기본 크기 100 × 100</text>
+<rect x="1020" y="270" width="340" height="140" rx="22" fill="#ecfdf5" stroke="#059669" stroke-width="3"/>
+<text x="1190.0" y="305" text-anchor="middle" dominant-baseline="central" font-size="28" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#059669">RUN</text>
+<text x="1190.0" y="345" text-anchor="middle" dominant-baseline="central" font-size="22" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">방향키로 이동</text>
+<text x="1190.0" y="373" text-anchor="middle" dominant-baseline="central" font-size="22" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">200px/s · 100 × 100</text>
+<rect x="220" y="660" width="340" height="160" rx="22" fill="#fff7ed" stroke="#d97706" stroke-width="3"/>
+<text x="390.0" y="695" text-anchor="middle" dominant-baseline="central" font-size="28" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#d97706">AUTORUN</text>
+<text x="390.0" y="735" text-anchor="middle" dominant-baseline="central" font-size="22" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">AutoRun 클래스</text>
+<text x="390.0" y="763" text-anchor="middle" dominant-baseline="central" font-size="22" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">400px/s · 150 × 150</text>
+<text x="390.0" y="791" text-anchor="middle" dominant-baseline="central" font-size="22" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">양 끝에서 방향 반전</text>
+<rect x="1020" y="660" width="340" height="160" rx="22" fill="#f5f3ff" stroke="#7c3aed" stroke-width="3"/>
+<text x="1190.0" y="695" text-anchor="middle" dominant-baseline="central" font-size="28" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#7c3aed">FALLEN</text>
+<text x="1190.0" y="735" text-anchor="middle" dominant-baseline="central" font-size="22" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">0.5초 동안 회전</text>
+<text x="1190.0" y="763" text-anchor="middle" dominant-baseline="central" font-size="22" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">누운 자세 유지 · 이동 중지</text>
+<rect x="702" y="261" width="175" height="32" fill="#f8fafc" rx="5"/>
+<text x="790" y="279" text-anchor="middle" dominant-baseline="central" font-size="24" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">좌우 방향키 누름</text>
+<rect x="702" y="341" width="175" height="32" fill="#f8fafc" rx="5"/>
+<text x="790" y="359" text-anchor="middle" dominant-baseline="central" font-size="24" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">모든 방향키 놓음</text>
+<rect x="263" y="514" width="33" height="30" fill="#f8fafc" rx="5"/>
+<text x="280" y="530" text-anchor="middle" dominant-baseline="central" font-size="28" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#b45309">A</text>
+<rect x="451" y="457" width="97" height="32" fill="#f8fafc" rx="5"/>
+<text x="500" y="475" text-anchor="middle" dominant-baseline="central" font-size="24" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#b45309">5초 경과</text>
+<rect x="705" y="532" width="230" height="32" fill="#f8fafc" rx="5"/>
+<text x="820" y="550" text-anchor="middle" dominant-baseline="central" font-size="24" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#b45309">방향키 누름: 자동 취소</text>
+<rect x="1085" y="514" width="30" height="30" fill="#f8fafc" rx="5"/>
+<text x="1100" y="530" text-anchor="middle" dominant-baseline="central" font-size="28" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">F</text>
+<rect x="1262" y="481" width="95" height="26" fill="#f8fafc" rx="5"/>
+<text x="1310" y="495" text-anchor="middle" dominant-baseline="central" font-size="22" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">SPACE +</text>
+<rect x="1266" y="511" width="117" height="30" fill="#f8fafc" rx="5"/>
+<text x="1325" y="527" text-anchor="middle" dominant-baseline="central" font-size="22" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">방향키 유지</text>
+<rect x="585" y="922" width="229" height="32" fill="#f8fafc" rx="5"/>
+<text x="700" y="940" text-anchor="middle" dominant-baseline="central" font-size="24" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">F (IDLE에서도 쓰러짐)</text>
+<rect x="852" y="157" width="216" height="32" fill="#f8fafc" rx="5"/>
+<text x="960" y="175" text-anchor="middle" dominant-baseline="central" font-size="24" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#23354d">SPACE (방향키 없음)</text>
+<text x="800" y="1010" text-anchor="middle" dominant-baseline="central" font-size="22" font-family="Apple SD Gothic Neo,Malgun Gothic,sans-serif" fill="#64748b">크기·속도는 AUTORUN을 나가면 원복 · 경계 반전은 상태 전이가 아닌 내부 동작</text>
+</svg>

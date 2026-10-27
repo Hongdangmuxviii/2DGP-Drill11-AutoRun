@@ -1,0 +1,14 @@
+stateDiagram-v2
+    [*] --> IDLE
+    IDLE --> RUN: 좌우 방향키 누름
+    RUN --> IDLE: 모든 방향키 놓음
+    IDLE --> AUTORUN: A 누름
+    AUTORUN --> IDLE: 진입 후 5초 경과
+    AUTORUN --> RUN: 좌우 방향키 누름
+    IDLE --> FALLEN: F 누름
+    RUN --> FALLEN: F 누름
+    FALLEN --> IDLE: SPACE 누름
+    IDLE --> RUN: 복귀 시 방향키가 눌려 있음
+    AUTORUN: AutoRun 클래스
+    AUTORUN: 속도 2배 / 크기 1.5배
+    AUTORUN: 화면 양 끝에서 내부적으로 방향 반전
