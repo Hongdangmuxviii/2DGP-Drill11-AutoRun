@@ -2,6 +2,8 @@
 
 
 class AutoRun:
+    SPEED_MULTIPLIER = 2.0
+
     def __init__(self, boy):
         self.boy = boy
 
@@ -10,7 +12,11 @@ class AutoRun:
         self.boy.animation_time = 0.0
 
     def update(self, elapsed):
-        self.boy.x += self.boy.face_dir * self.boy.RUN_SPEED * elapsed
+        self.boy.x += self.boy.face_dir * self.speed * elapsed
+
+    @property
+    def speed(self):
+        return self.boy.RUN_SPEED * self.SPEED_MULTIPLIER
 
     def draw(self):
         row = 100 if self.boy.face_dir == 1 else 0
