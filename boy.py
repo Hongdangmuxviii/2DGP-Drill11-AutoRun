@@ -40,6 +40,7 @@ class Boy:
                 {'trigger': 'stop_running', 'source': 'RUN', 'dest': 'IDLE'},
                 {'trigger': 'start_auto_run', 'source': 'IDLE', 'dest': 'AUTORUN'},
                 {'trigger': 'finish_auto_run', 'source': 'AUTORUN', 'dest': 'IDLE'},
+                {'trigger': 'cancel_auto_run', 'source': 'AUTORUN', 'dest': 'RUN'},
                 {'trigger': 'fall', 'source': ['IDLE', 'RUN'], 'dest': 'FALLEN'},
                 {'trigger': 'stand_up', 'source': 'FALLEN', 'dest': 'IDLE'},
             ],
@@ -66,6 +67,9 @@ class Boy:
             if event.type == SDL_KEYDOWN:
                 self.held_keys.add(event.key)
                 self.last_direction_key = event.key
+                if self.state == 'AUTORUN':
+                    self.face_dir = 1 if event.key == SDLK_RIGHT else -1
+                    self.cancel_auto_run()
             else:
                 self.held_keys.discard(event.key)
             self.update_movement()
