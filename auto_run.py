@@ -1,5 +1,7 @@
 """과제에서 요구한 독립적인 자동 달리기 상태 클래스."""
 
+from pico2d import get_canvas_width
+
 
 class AutoRun:
     SPEED_MULTIPLIER = 2.0
@@ -11,9 +13,25 @@ class AutoRun:
     def enter(self):
         self.boy.frame = 0
         self.boy.animation_time = 0.0
+        left, right = self.bounds()
+        self.boy.x = max(left, min(right, self.boy.x))
 
     def update(self, elapsed):
-        self.boy.x += self.boy.face_dir * self.speed * elapsed
+        left, right = self.bounds()
+        span = right - left
+        # 한 번의 갱신에 경계를 여러 번 넘더라도 이동 거리를 보존한다.
+        position = self.boy.x - left + self.boy.face_dir * self.speed * elapsed
+        phase = position % (2 * span)
+        if phase < span:
+            self.boy.x = left + phase
+            self.boy.face_dir = 1
+        else:
+            self.boy.x = right - (phase - span)
+            self.boy.face_dir = -1
+
+    def bounds(self):
+        half = 100 * self.SIZE_MULTIPLIER / 2
+        return half, get_canvas_width() - half
 
     @property
     def speed(self):
