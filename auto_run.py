@@ -3,6 +3,7 @@
 
 class AutoRun:
     SPEED_MULTIPLIER = 2.0
+    SIZE_MULTIPLIER = 1.5
 
     def __init__(self, boy):
         self.boy = boy
@@ -20,7 +21,10 @@ class AutoRun:
 
     def draw(self):
         row = 100 if self.boy.face_dir == 1 else 0
+        size = int(100 * self.SIZE_MULTIPLIER)
+        # 발 위치를 유지하면서 몸 크기만 확대한다.
+        draw_y = self.boy.y + (size - 100) * 0.4
         self.boy.image.clip_draw(
             self.boy.frame * 100, row, 100, 100,
-            self.boy.x, self.boy.y,
+            self.boy.x, draw_y, size, size,
         )
